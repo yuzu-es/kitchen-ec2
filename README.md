@@ -242,6 +242,12 @@ The price you bid in order to submit a spot request. An additional step will be 
 
 The default is `nil`.
 
+### duration
+
+The duration is the duration in hours after which the spot instance will be destroyed automatically. This is only valid for spot instances for which you have specified a price above. 1 means 1 hour. 4 means 4 hours. nil means indefinitely.
+
+The default is `nil`.
+
 ### http\_proxy
 
 Specify a proxy to send AWS requests through.  Should be of the format `http://<host>:<port>`.

@@ -55,6 +55,7 @@ module Kitchen
       default_config :private_ip_address, nil
       default_config :iam_profile_name,   nil
       default_config :price,              nil
+      default_config :duration,           nil
       default_config :retryable_tries,    60
       default_config :retryable_sleep,    5
       default_config :aws_access_key_id,  nil
@@ -338,6 +339,9 @@ module Kitchen
         debug("Creating EC2 Spot Instance..")
         request_data = {}
         request_data[:spot_price] = config[:price].to_s
+        unless config[:duration].nil?
+          request_data[:valid_until] = (config[:duration] * 60 * 60) + Time.now
+        end
         request_data[:launch_specification] = instance_generator.ec2_instance_data
 
         response = ec2.client.request_spot_instances(request_data)
