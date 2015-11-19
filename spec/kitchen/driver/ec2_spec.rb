@@ -197,7 +197,7 @@ describe Kitchen::Driver::Ec2 do
     it "submits the server request" do
       expect(generator).to receive(:ec2_instance_data).and_return({})
       expect(actual_client).to receive(:request_spot_instances).with(
-        :spot_price => "", :valid_until => nil, :launch_specification => {}
+        :spot_price => "", :block_duration_minutes => nil, :launch_specification => {}
       ).and_return(response)
       expect(actual_client).to receive(:wait_until)
       expect(client).to receive(:get_instance_from_spot_request).with("id")

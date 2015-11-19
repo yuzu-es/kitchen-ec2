@@ -246,7 +246,7 @@ The default is `nil`.
 
 The duration is the duration in hours after which the spot instance will be destroyed automatically. This is only valid for spot instances for which you have specified a price above. 1 means 1 hour. 4 means 4 hours. nil means indefinitely.
 
-The default is `nil`.
+The default is `nil`. The valid values are only 1, 2, 3, 4, 5, and 6.
 
 ### http\_proxy
 

@@ -339,8 +339,10 @@ module Kitchen
         debug("Creating EC2 Spot Instance..")
         request_data = {}
         request_data[:spot_price] = config[:price].to_s
-        unless config[:duration].nil?
-          request_data[:valid_until] = (config[:duration] * 60 * 60) + Time.now
+        if [1,2,3,4,5,6].include? config[:duration]
+          request_data[:block_duration_minutes] = (config[:duration] * 60 )
+        else
+          request_data[:block_duration_minutes] = nil
         end
         request_data[:launch_specification] = instance_generator.ec2_instance_data
 
